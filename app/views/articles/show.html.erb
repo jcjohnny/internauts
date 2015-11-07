@@ -1,0 +1,13 @@
+<h1><%= @article.title %></h1>
+<p><%= @article.body %></p>
+<p>rate it: <%= @article.rating %></p>
+<p>address: <%= @article.address %></p>
+<p>zipcode: <%= @article.zipcode %></p>
+<p>city:<%= @article.city %></p>
+<p>state: <%= @article.state %></p>
+<p>sport:<%= @article.sport %></p>
+<p>players: <%= @article.players %></p>
+<p>time: <%= @article.created_at.strftime("%b %d, %Y") %></p>
+<%= link_to "<< Back to Articles List", articles_path %>
+<%= link_to 'delete', article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
+<%= link_to "edit", edit_article_path(@article) %>
