@@ -1,28 +1,46 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### What was used in this application
+- gmap4rails gem
+- pry rails gem
+- geocoder gem
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### The functionality
+- added users
+- added comments
+- added comments to articles
+- added google maps with multiple pin locations
+- login sessions work
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### Walking a straight line
+- followed the blogger tutorial
+- followed Jason's tun.r lesson from class
+- after all that, I had to use my own knowledge and understanding to piece everything together
+- three resources google map tuts
+-- https://github.com/apneadiving/Google-Maps-for-Rails
+-- http://apneadiving.github.io/
+-- https://binarapps.com/blog/integration-of-googlemaps-in-rails-4/
+
+- designed last
+
+### Installation Instructions
+- rake db:create
+- rake db:migrate
+- rake db:seed
+- OUT OF ORDER add basketball tag to an article, then soccer, than football, lastly baseball
+- Create user.
+
+### Unsolved Problems
+- Couldn't solve how to added users to the Article attribute player_names to allow users to join the list
+- Didn't have time to attach comments to users
+- Didn't have time to attack article to users
+
+
+ ![wireframe](http://i.imgur.com/Y2vgqBe.jpg)
+
+https://trello.com/b/5Jur9n45/internaut
+
+https://evening-wave-8536.herokuapp.com/
+
+https://github.com/jcjohnny/internauts
