@@ -1,4 +1,13 @@
+<script src="//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry"></script>
+<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
+
 <h1><%= @article.title %></h1>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+
 <p>
   Tags:
   <% @article.tags.each do |tag| %>
@@ -9,7 +18,10 @@
     <%= image_tag @article.image.url %><br/>
 <% end %>
 <p><%= @article.body %></p>
+<p>latitude: <%= @article.latitude %></p>
+<p>longitude: <%= @article.longitude %></p>
 <p>rate it: <%= @article.rating %></p>
+<p>geo_address: <%= @article.geo_address %></p>
 <p>address: <%= @article.address %></p>
 <p>zipcode: <%= @article.zipcode %></p>
 <p>city:<%= @article.city %></p>
@@ -21,8 +33,48 @@
 
 <h3>Comments (<%=@article.comments.size %>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments %>
-<%= render partial: 'comments/form' %>
+
+
+
+<% if logged_in? %>
+    <div id="comments_form">
+      <%= render partial: 'comments/form' %>
+    </div>
+    <% else %>
+    <div id="comments-login">
+        <p>
+            please login to post a message
+        </p>
+        <%= button_to 'Login', '/login', method: :get  %>
+    </div>
+<% end %>
+
+
+
+
+
 <%= link_to '<< Back to Articles List', articles_path %>
 <%= link_to 'delete', article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
 
 <%= link_to 'edit', edit_article_path(@article) %>
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers([
+    {
+      "lat": <%= @article.latitude %>,
+      "lng": <%= @article.longitude %>,
+      "picture": {
+        "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
+        "width":  32,
+        "height": 32
+      },
+      "infowindow": "hello!"
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+
+</script>

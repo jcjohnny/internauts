@@ -1,3 +1,31 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div#logout {
+    position: fixed;
+    z-index: 99;
+    top: 10px;
+    right: 10px;
+}
+
+div#login {
+    position: fixed;
+    z-index: 99;
+    top: 0px;
+    left: -120px;
+}
+
+#sports-navigator {
+    position: fixed;
+    left: 10px;
+    top: 60px;
+    z-index: 99;
+}
+
+body {
+    margin-left: 130px;
+}
+
+ul {
+    list-style: none;
+}

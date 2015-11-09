@@ -5,6 +5,17 @@ class Article < ActiveRecord::Base
     has_attached_file :image
     validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
+    geocoded_by :geo_address
+    after_validation :geocode
+
+    def geo_address
+        coded_address = []
+        coded_address.push self.address
+        coded_address.push self.city
+        coded_address.push self.zipcode
+        coded_address.join(" ")
+    end
+
 
     def tag_list
         self.tags.collect do |tag|

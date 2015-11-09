@@ -7,7 +7,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+    <ul id="sports-navigator">
+        <li class="sports-tag"><a href="/">All Sports</a><img src="../assets/baseball.svg" alt=""></li>
+        <li class="sports-tag"><a href="/">Basketball</a></li>
+        <li class="sports-tag"><a href="/">Football</a></li>
+        <li class="sports-tag"><a href="/">Soccer</a></li>
+
+    </ul>
+
     <p class="flash"><%= flash.notice %></p>
+
+
+    <% if logged_in? %>
+        <div id="logout">
+          <%= button_to 'Logout', logout_path, :method => :delete %>
+        </div>
+        <% else %>
+        <div id="login">
+            <%= button_to 'Login', '/login', method: :get  %>
+        </div>
+    <% end %>
+
 
 <%= yield %>
 

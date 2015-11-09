@@ -4,6 +4,10 @@ class ArticlesController < ApplicationController
 
     def index
         @articles = Article.all
+        @hash = Gmaps4rails.build_markers(@articles) do |article, marker|
+          marker.lat article.latitude
+          marker.lng article.longitude
+        end
     end
 
     def show
@@ -40,7 +44,7 @@ class ArticlesController < ApplicationController
 
     def destroy
         @article = Article.find(params[:id])
-        @article.tags.destroy
+        @article.tags = []
         @article.destroy
         flash.notice = "Article Destroyed"
         redirect_to articles_path(@articles)
