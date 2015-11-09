@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
-      flash[:success] = "Welcome to Tun.r"
+      flash[:success] = "Welcome! Please Relogin"
       redirect_to @user
     else
       render new_user_path
