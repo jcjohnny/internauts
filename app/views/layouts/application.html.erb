@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,200,500,900,800,600,700,100' rel='stylesheet' type='text/css'>
+
   <title>Internauts</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav>
 
+    <div class="nav-container">
     <ul id="sports-navigator">
-        <li class="sports-tag"><a href="/">All Sports</a><img src="../assets/baseball.svg" alt=""></li>
-        <li class="sports-tag"><a href="/">Basketball</a></li>
-        <li class="sports-tag"><a href="/">Football</a></li>
-        <li class="sports-tag"><a href="/">Soccer</a></li>
-
+        <li class ="nauts"><a href="/"><img src="../assets/internaut_logo" alt=""></a><h1>INTERNAUTS</h1></li>
+        <li class="sports-tag"><a href="/articles"><br/>games</a></li>
+        <li class="sports-tag"><a href="/tags/1"><br/>basketball</a></li>
+        <li class="sports-tag"><a href="/tags/3"><br/>football</a></li>
+        <li class="sports-tag"><a href="/tags/2"><br/>soccer</a></li>
+        <li class="sports-tag"><a href="/tags/4"><br/>baseball</a></li>
+        <% if logged_in? %>
+            <div id="logout">
+              <%= button_to 'Logout', logout_path, :method => :delete %>
+            </div>
+            <% else %>
+            <div id="logout">
+                <%= button_to 'Login', '/login', method: :get  %>
+            </div>
+        <% end %>
     </ul>
+    </div>
+</nav>
+
+
 
     <p class="flash"><%= flash.notice %></p>
 
-
-    <% if logged_in? %>
-        <div id="logout">
-          <%= button_to 'Logout', logout_path, :method => :delete %>
-        </div>
-        <% else %>
-        <div id="login">
-            <%= button_to 'Login', '/login', method: :get  %>
-        </div>
-    <% end %>
 
 
 <%= yield %>

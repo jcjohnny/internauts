@@ -13,6 +13,7 @@ class CreateArticles < ActiveRecord::Migration
         t.text :player_names, array: true, default: []
         t.float :latitude
         t.float :longitude
+        t.text :location
         t.timestamps
     end
   end

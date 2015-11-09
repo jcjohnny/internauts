@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20151108081815) do
     t.text     "player_names",       default: [], array: true
     t.float    "latitude"
     t.float    "longitude"
+    t.text     "location"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"

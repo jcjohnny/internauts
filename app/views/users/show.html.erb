@@ -6,9 +6,10 @@
   <% if @user.image.exists? %>
       <%= image_tag @user.image.url %><br/>
   <% end %>
-  <h1>Hope your having a great day <%= @user.username%></h1><br>
+  <h1>Your on your way to becoming an Internaut! <%= @user.username%></h1><br>
 
-  <h1>I would rather you stick around but if you want to delete your account click below</h1><br><br>
+  <h1>Join games, gain reps, and become a legendary internaut. Follow the links above to join some sports activites. </h1><br><br>
+
 
   <%= button_to 'DELETE', @user, :method => :delete %>
 

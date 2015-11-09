@@ -1,34 +1,49 @@
-<script src="//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry"></script>
-<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
-
-
-<h1>StaticPages#index</h1>
-
-
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+<div class="home-image">
+<p id = "home-text">
+    Join local sports games in your area
+</p>
 </div>
 
-<ul id="articles">
-  <% @articles.order(created_at: :desc).each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article) %>
-    </li>
-  <% end %>
-</ul>
+<div class = "recent-game">
+    <h1> Find the right games for you</h1>
+    <div class = "home-sports">
+        <a href="/tags/1"><div class="home-sports-image"><img src="../assets/basketball.svg" alt="" /></div>
+        <h3>basketball</h3>
+        <p>check it</p></a>
+    </div>
+    <div class = "home-sports">
+        <a href="/tags/3"><div class="home-sports-image"><img src="../assets/football.svg" alt="" /></div>
+        <h3>football</h3>
+        <p>check it</p></a>
+    </div>
+    <div class = "home-sports">
+        <a href="/tags/2"><div class="home-sports-image"><img src="../assets/soccer.svg" alt="" /></div>
+        <h3>soccer</h3>
+        <p>check it</p></a>
+    </div>
+    <div class = "home-sports">
+        <a href="/tags/4"><div class="home-sports-image"><img src="../assets/baseball.svg" alt="" /></div>
+        <h3>baseball</h3>
+        <p>check it</p></a>
+    </div>
+</div>
 
-<script type="text/javascript">
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    var markers = handler.addMarkers([
 
-        <% @articles.each do |article| %>
-            { lat: <%= article.latitude %>, lng: <%= article.longitude %>,
-                infowindow: "<%= article.title %>"
-            },
-        <% end %>
-    ]);
-handler.bounds.extendWith(markers);
-handler.fitMapToBounds();
-});
-</script>
+<a href="/articles"><div class= "check-sports">
+become a sports juggernaut at all events
+</div></a>
+
+<div class="upcoming">
+    <div class="upcoming-col">
+    <h3>become a sports juggernaut at the next event:</h3>
+    <h2><%= @articles.order(created_at: :desc)[0].title %></h2>
+    <p>@ <%= @articles.order(created_at: :desc)[0].location %></p>
+    </div>
+
+    <div class="upcoming-col">
+        <h2>starting at</h2>
+        <p class="dater"><%= @articles.order(created_at: :desc)[0].created_at.strftime("%b %d, %Y") %></p>
+        <p><%= @articles.order(created_at: :desc)[0].created_at.strftime("%l %M, %S") %></p>
+        <a href="articles/<%= @articles.order(created_at: :desc)[0].id %>"><p class="upcoming-link">check it</p></a>
+    </div>
+</div>
