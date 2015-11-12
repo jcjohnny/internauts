@@ -30,6 +30,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
                 infowindow: "<%= article.title %>"
             },
         <% end %>
+
     ]);
 handler.bounds.extendWith(markers);
 handler.fitMapToBounds();

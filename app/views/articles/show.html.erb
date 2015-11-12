@@ -1,8 +1,6 @@
 <script src="//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry"></script>
 <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
 
-
-
 <div class="game-info">
 
 <ul id="article-control">
@@ -11,9 +9,6 @@
     <li><div id= "edit-article"><%= link_to 'edit', edit_article_path(@article) %></div>
 </li>
 </ul>
-
-
-
 
 
 <div id= "googlymap">
@@ -43,8 +38,6 @@
 <div class="comments-area">
 <h3>Comments (<%=@article.comments.size %>)</h3>
 <div id="commeter"><%= render partial: 'articles/comment', collection: @article.comments %></div>
-
-
 
 <% if logged_in? %>
     <div id="comments_form">
